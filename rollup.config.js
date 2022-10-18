@@ -1,13 +1,9 @@
 import del from 'del';
-import {
-    terser
-} from 'rollup-plugin-terser';
+import { terser } from 'rollup-plugin-terser';
 import typescript from 'rollup-plugin-typescript2';
 
-export default async function ({
-    watch
-}) {
-    await del('build');
+export default async function ({ watch }) {
+    //await del('build');
 
     const builds = [];
 
@@ -18,7 +14,8 @@ export default async function ({
             }),
         ],
         input: ['src/index.ts'],
-        output: [{
+        output: [
+            {
                 dir: 'build/esm/',
                 format: 'esm',
                 entryFileNames: '[name].js',
@@ -39,7 +36,7 @@ export default async function ({
         plugins: [
             terser({
                 compress: {
-                    ecma: 2019
+                    ecma: 2019,
                 },
             }),
         ],
@@ -50,5 +47,5 @@ export default async function ({
         },
     });
 
-    return builds
+    return builds;
 }

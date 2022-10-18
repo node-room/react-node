@@ -1,7 +1,7 @@
 {
-  "name": "rollup-starter-web",
+  "name": "react-node",
   "version": "1.0.0",
-  "description": "Rollup starter project for client side",
+  "description": "React client lib for the NodeRoom",
   "main": "build/cjs/index.js",
   "module": "build/esm/index.js",
   "typings": "build/esm/index.d.ts",
@@ -16,9 +16,13 @@
   "author": "prasenjeet-symon",
   "license": "MIT",
   "keywords": [
-    "Blueprint",
-    "Rollup",
-    "Starter Project"
+    "Realtime",
+    "FullStack",
+    "StateManagement",
+    "NodeRoom",
+    "NodeRoomClient",
+    "Js Framework",
+    "SSE"
   ],
   "bugs": {
     "url": ""
@@ -35,10 +39,12 @@
     "@types/jest": "^26.0.10",
     "@types/jest-environment-puppeteer": "^4.3.2",
     "@types/puppeteer": "^3.0.1",
+    "@types/react": "^18.0.21",
     "del": "^5.1.0",
     "jest": "^26.4.2",
     "jest-puppeteer": "^4.4.0",
     "puppeteer": "^5.2.1",
+    "react": "^18.2.0",
     "rollup": "^2.26.5",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-node-resolve": "^5.2.0",
@@ -46,5 +52,8 @@
     "rollup-plugin-typescript2": "^0.27.2",
     "ts-jest": "^26.3.0",
     "typescript": "^4.0.2"
+  },
+  "dependencies": {
+    "nanoid": "^4.0.0"
   }
 }
