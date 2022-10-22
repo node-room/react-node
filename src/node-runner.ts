@@ -1,4 +1,4 @@
-import { fetchNode, HttpDataEmitter, NodeCallConfig } from 'node-room-client';
+import { fetchNode, NodeCallConfig, NodeCleaner } from 'node-room-client';
 import { signalResult } from './main-interface';
 
 export class NodeRunnerManager {
@@ -10,12 +10,7 @@ export class NodeRunnerManager {
         return NodeRunnerManager._instance;
     }
 
-    constructor() {
-        HttpDataEmitter.getInstance().hookForDeletion = (paginationID) => {
-            const nodeRunner = this.getNodeRunner(paginationID);
-            if (nodeRunner) nodeRunner.markComplete();
-        };
-    }
+    constructor() {}
 
     // add new runner
     public addNodeRunner(nodeRunner: NodeRunner) {
@@ -71,7 +66,7 @@ export class NodeRunner {
     // mark complete
     public markComplete() {
         if (this.subscription) this.subscription.unsubscribe();
-        HttpDataEmitter.getInstance().markComplete(this.paginationID);
+        NodeCleaner.getInstance().clean(this.paginationID);
         NodeRunnerManager.getInstance().deleteNodeRunner(this.paginationID);
     }
 }

@@ -34,7 +34,7 @@ export function mutateNode(nodeName: string, paramObject: any, config?: NodeCall
     if (!nodeName) throw new Error('Node name is required');
     // param object is required or empty object
     if (!paramObject) paramObject = {};
-    
+
     return new Promise<any>((resolve, reject) => {
         const paginationID = config ? ('paginationID' in config ? (config.paginationID as string) : nanoid()) : nanoid();
         const subs = fetchNode(nodeName, paramObject, { ...config, paginationID: paginationID }).subscribe((data) => {
